@@ -1,0 +1,42 @@
+services:
+  - type: worker
+    name: sobhan-dental-bot
+    runtime: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm install --omit=dev
+    startCommand: node bot/index.js
+    autoDeploy: true
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ADMIN_CHAT_IDS
+        sync: false
+      - key: AI_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: AI_REQUEST_TIMEOUT_MS
+        value: "12000"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash-lite
+      - key: OLLAMA_URL
+        value: ""
+      - key: DENTAL_AI_MODEL
+        value: qwen3.5:2b
+      - key: BOT_DATA_DIR
+        value: /var/data/sobhan-bot
+      - key: CLINIC_PHONE
+        value: "36332221"
+      - key: CLINIC_MAP_URL
+        value: https://maps.app.goo.gl/uoS3bbVnukbZafdg9
+      - key: CLINIC_INSTAGRAM
+        value: https://instagram.com/sobhan_dentalclinic_yazd
+    disk:
+      name: sobhan-dental-bot-disk
+      mountPath: /var/data
+      sizeGB: 1
