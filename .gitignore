@@ -1,0 +1,4 @@
+node_modules/
+.npm-cache/
+.env
+bot/data/store.json
