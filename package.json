@@ -1,0 +1,29 @@
+{
+  "name": "sobhan-dental-clinic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Animated Persian dental clinic site with a Gemini-powered customer chatbot",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "bot:start": "node bot/index.js",
+    "bot:check": "node bot/index.js --check",
+    "build:iosweb": "node scripts/build-capacitor-bundle.mjs",
+    "cap:sync:ios": "npm run build:iosweb && npx cap sync ios",
+    "cap:open:ios": "npx cap open ios",
+    "ios:archive:unsigned": "DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO archive -archivePath ios/App/build/NoodleRunner.xcarchive"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "https-proxy-agent": "^7.0.6",
+    "telegraf": "^4.16.3",
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3"
+  }
+}
