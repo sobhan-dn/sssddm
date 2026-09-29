@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#221344" />
+    <meta name="description" content="Letter Rush — a fast, tactile word-building adventure" />
+    <title>Letter Rush — Roll, Learn, Explore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="game" aria-label="Letter Rush game">
+      <canvas id="gameCanvas" aria-hidden="true"></canvas>
+
+      <header class="topbar">
+        <div class="brand" aria-label="Letter Rush">
+          <div class="brand-orbit"><span>A</span></div>
+          <div><b>LETTER<br />RUSH</b><small>ROLL &amp; LEARN</small></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>DISTANCE</span><strong><em id="distance">0</em> m</strong></div>
+          <div class="stat"><span>SCORE</span><strong id="score">0</strong></div>
+          <button id="soundButton" class="round-button" aria-label="Toggle sound">♪</button>
+          <button id="pauseButton" class="round-button" aria-label="Pause game">Ⅱ</button>
+        </div>
+      </header>
+
+      <section class="mission" aria-live="polite">
+        <div class="mission-kicker"><span></span> PICK THE MISSING LETTER</div>
+        <div class="word" id="wordDisplay" dir="ltr">C _ T</div>
+        <div class="hint" id="hintText">A furry pet that says meow</div>
+      </section>
+
+      <section class="choice-panel" aria-label="Choose a letter">
+        <div class="combo"><span>COMBO</span><strong id="combo">×1</strong></div>
+        <div class="choices" id="choices"></div>
+        <div class="streak" id="streak" aria-label="Answer streak"></div>
+      </section>
+
+      <div class="tip" id="tip"><b>HOLD</b><span>to roll faster</span></div>
+
+      <section class="controls" aria-label="Game controls">
+        <button class="control brake" id="brakeButton"><span class="pedal-icon">◀</span><b>BRAKE</b><small>HOLD</small></button>
+        <button class="control boost" id="boostButton"><span class="boost-icon">⚡</span><b>BOOST</b><small>SMASH</small><i id="boostMeter"></i></button>
+        <button class="control gas" id="gasButton"><span class="pedal-icon">▶</span><b>GO!</b><small>HOLD</small></button>
+      </section>
+
+      <div class="toast" id="toast" role="status"></div>
+
+      <section class="overlay visible" id="startOverlay">
+        <div class="modal start-card">
+          <div class="hero-wheel"><span>A</span><i></i></div>
+          <p class="eyebrow">READY TO ROLL?</p>
+          <h1>Pick your letter,<br /><mark>roll into adventure!</mark></h1>
+          <p>Complete each word, then roll your letter across hills, crates, and spikes.</p>
+          <button class="primary" id="startButton">START GAME <span>→</span></button>
+          <div class="how"><span>① PICK A LETTER</span><span>② HOLD TO ROLL</span><span>③ CONQUER THE TRAIL</span></div>
+        </div>
+      </section>
+
+      <section class="overlay" id="pauseOverlay">
+        <div class="modal compact">
+          <p class="eyebrow">GAME PAUSED</p><h2>Catch your breath!</h2>
+          <button class="primary" id="resumeButton">KEEP ROLLING</button>
+          <button class="text-button" id="restartButton">Restart run</button>
+        </div>
+      </section>
+
+      <section class="overlay" id="gameOverOverlay">
+        <div class="modal compact">
+          <p class="eyebrow">RUN COMPLETE</p><h2 id="finalScore">0 POINTS</h2>
+          <p id="finalMessage">Great run! Ready to beat it?</p>
+          <button class="primary" id="againButton">ROLL AGAIN</button>
+        </div>
+      </section>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
