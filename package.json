@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "start:iphone": "node server.js",
     "bot:start": "node bot/index.js",
     "bot:check": "node bot/index.js --check",
     "build:iosweb": "node scripts/build-capacitor-bundle.mjs",

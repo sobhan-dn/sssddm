@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 const publicDir = path.join(__dirname, 'public');
@@ -7,6 +8,7 @@ const mime = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/manifest+json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
 };
@@ -35,4 +37,22 @@ const server = http.createServer((req, res) => {
 });
 
 const port = Number(process.env.PORT) || 3000;
-server.listen(port, () => console.log(`Letter Rush is running on http://localhost:${port}`));
+const host = process.env.HOST || '0.0.0.0';
+
+server.listen(port, host, () => {
+  console.log(`\nLetter Rush is ready:`);
+  console.log(`  Computer: http://localhost:${port}`);
+
+  const addresses = Object.values(os.networkInterfaces())
+    .flat()
+    .filter((address) => address && address.family === 'IPv4' && !address.internal)
+    .map((address) => address.address);
+
+  for (const address of [...new Set(addresses)]) {
+    console.log(`  iPhone:   http://${address}:${port}`);
+  }
+  if (addresses.length === 0) {
+    console.log('  iPhone:   connect both devices to the same Wi-Fi, then use this computer’s local IP');
+  }
+  console.log('');
+});
