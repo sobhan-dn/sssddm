@@ -1,0 +1,18 @@
+{
+  "name": "Letter Rush",
+  "short_name": "Letter Rush",
+  "description": "Pick the missing letter and roll across a colorful obstacle course.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#21143f",
+  "theme_color": "#221344",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

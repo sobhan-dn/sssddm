@@ -1,13 +1,14 @@
 {
-  "name": "sobhan-dental-clinic",
+  "name": "letter-rush",
   "version": "1.0.0",
   "private": true,
-  "description": "Animated Persian dental clinic site with a Gemini-powered customer chatbot",
+  "description": "A tactile English word-learning hill runner game",
   "engines": {
     "node": "22.x"
   },
   "scripts": {
     "start": "node server.js",
+    "start:iphone": "node server.js",
     "bot:start": "node bot/index.js",
     "bot:check": "node bot/index.js --check",
     "build:iosweb": "node scripts/build-capacitor-bundle.mjs",
